@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # read -r -d '' DOCUMENTATION << EOF
 # Script for running Python database tests
 
@@ -7,23 +9,32 @@
 # Environment Variables:
 # EOF
 
-# SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 function test {
-	python test_database_setup.py
+	echo "*** SETTING UP TEST DATABASE ***" 
+	python test_database_setup.py 
+	echo
+	echo "*** POPULATING DATABASE ***"
 	python test_database_populator.py
+	echo
+	echo "*** TESTING PROGRAMS ***"
 	python test_app.py
+	echo
+	echo "*** DELETING DATABASE ***"
 	rm test_database.db
+	echo
+	echo
+	echo "Testing completed."
 }
 
-function run {
-	ACTION=$1
+ACTION=$1
+function main {
 	case $ACTION in
-		test)
-			test ;;
-		*)
-			echo "Invalid argument"
+		test) test;;
+		*) echo "Invalid argument"
 			exit 1
 	esac
 }
 
+main
