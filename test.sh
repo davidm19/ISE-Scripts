@@ -14,20 +14,15 @@ EOF
 # SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 function test {
-	echo "*** SETTING UP TEST DATABASE ***" 
+	echo -e "*** SETTING UP TEST DATABASE ***\n" 
 	python test_database_setup.py 
-	echo
-	echo "*** POPULATING DATABASE ***"
+	echo -e "*** POPULATING DATABASE ***\n"
 	python test_database_populator.py
-	echo
-	echo "*** TESTING PROGRAMS ***"
+	echo -e "*** TESTING PROGRAMS ***\n"
 	python test_app.py
-	echo
-	echo "*** DELETING DATABASE ***"
+	echo -e "*** DELETING DATABASE ***\n"
 	rm test_database.db
-	echo
-	echo
-	echo "Testing completed."
+	echo -e "\nTesting completed."
 }
 
 ACTION=$1
