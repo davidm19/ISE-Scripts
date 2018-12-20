@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# read -r -d '' DOCUMENTATION << EOF
-# Script for running Python database tests
+read -r -d '' DOCUMENTATION << EOF
+Script for running Python database tests
 
-# Usage:
+Usage:
+    $CMD test = set up a test database, populate it, test it out, and delete it
 	 
 
-# Environment Variables:
-# EOF
+Environment Variables:
+    PASS
+EOF
 
 # SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
